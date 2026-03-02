@@ -1,0 +1,76 @@
+# AERIS - Breathing Practices Platform
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+out/
+
+# Kotlin
+*.kotlin_module
+
+# Testing
+/test-results
+/test-output
+
+# Room schema exports
+/schemas
+
+# Keystore (never commit!)
+*.jks
+*.keystore
+keystore.properties
+
+# IDE
+.idea/
+*.ipr
+*.iws
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# iOS
+iosApp/Pods/
+iosApp/*.xcworkspace
+iosApp/*.xcodeproj/xcuserdata/
+iosApp/*.xcodeproj/project.xcworkspace/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+*.moved-aside
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
