@@ -1,0 +1,6 @@
+# Copy this file to local.properties and update paths
+# DO NOT commit local.properties to version control
+
+sdk.dir=D:\\AI_projectS\\tools\\android-sdk
+# Alternative for macOS/Linux:
+# sdk.dir=/Users/YOUR_USERNAME/Library/Android/sdk
