@@ -61,6 +61,14 @@ AERIS is an open-source Kotlin Multiplatform (KMP) breathing practices platform 
 - ✅ Documentation: README, algorithms.md, CONTRIBUTING
 - ✅ PowerShell generator script
 
+### Completed (2026-01-02 - Update 2)
+- ✅ Apple Watch companion app with real-time HR monitoring
+- ✅ HealthKit integration for heart rate and HRV
+- ✅ WatchConnectivity for iOS ↔ Watch communication
+- ✅ Session sync (phase display on watch)
+- ✅ Quick-start from watch
+- ✅ Documentation: watch-integration.md
+
 ### Pending
 - iOS full implementation (placeholder only)
 - Instrumented tests (androidTest)
@@ -114,5 +122,7 @@ AERIS/
 
 ## Key Files
 - `/app/aeris/` - Complete project
-- `/app/aeris-project.zip` - Downloadable archive (129KB)
+- `/app/aeris-project.zip` - Downloadable archive
 - `/app/aeris/docs/algorithms.md` - AI formulas with DOI references
+- `/app/aeris/docs/watch-integration.md` - Apple Watch setup guide
+- `/app/aeris/watchApp/` - watchOS companion app
