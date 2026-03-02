@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AERIS</string>
+    <string name="app_tagline">Дышите лучше. Живите лучше.</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Главная</string>
+    <string name="nav_protocols">Протоколы</string>
+    <string name="nav_session">Сессия</string>
+    <string name="nav_profile">Профиль</string>
+    <string name="nav_settings">Настройки</string>
+    
+    <!-- Home -->
+    <string name="welcome_back">С возвращением</string>
+    <string name="today_recommendation">Рекомендация дня</string>
+    <string name="quick_start">Быстрый старт</string>
+    <string name="your_progress">Ваш прогресс</string>
+    <string name="day_streak">Дней подряд</string>
+    <string name="total_sessions">Всего сессий</string>
+    <string name="current_level">Уровень</string>
+    
+    <!-- Session -->
+    <string name="start_session">Начать сессию</string>
+    <string name="pause">Пауза</string>
+    <string name="resume">Продолжить</string>
+    <string name="stop">Стоп</string>
+    <string name="complete">Завершить</string>
+    <string name="cycle_format">Цикл %1$d из %2$d</string>
+    <string name="inhale">Вдох</string>
+    <string name="hold">Задержка</string>
+    <string name="exhale">Выдох</string>
+    <string name="hold_out">Пауза</string>
+    <string name="skip_hold">Пропустить</string>
+    <string name="great_job">Отлично!</string>
+    <string name="session_complete">Сессия завершена</string>
+    
+    <!-- Protocols -->
+    <string name="all_protocols">Все</string>
+    <string name="relaxation">Релаксация</string>
+    <string name="energy">Энергия</string>
+    <string name="therapy">Терапия</string>
+    <string name="spiritual">Духовные</string>
+    <string name="minutes_format">%d мин</string>
+    <string name="cycles_format">%d циклов</string>
+    <string name="locked">Заблокировано</string>
+    <string name="unlock_at_level">Открывается на уровне %d</string>
+    
+    <!-- Difficulty -->
+    <string name="beginner">Начинающий</string>
+    <string name="intermediate">Средний</string>
+    <string name="advanced">Продвинутый</string>
+    <string name="expert">Эксперт</string>
+    
+    <!-- Safety -->
+    <string name="disclaimer_title">Медицинский отказ</string>
+    <string name="disclaimer_text">AERIS не является медицинским устройством и не заменяет консультацию врача. Проконсультируйтесь со специалистом перед началом практики дыхательных упражнений.</string>
+    <string name="accept">Я понимаю</string>
+    <string name="emergency_calm">Спокойствие за 60 секунд</string>
+    
+    <!-- Settings -->
+    <string name="settings">Настройки</string>
+    <string name="dark_mode">Тёмная тема</string>
+    <string name="language">Язык</string>
+    <string name="sound">Звук</string>
+    <string name="haptic_feedback">Вибрация</string>
+    <string name="health_connect">Health Connect</string>
+    <string name="connect">Подключить</string>
+    <string name="connected">Подключено</string>
+    
+    <!-- Accessibility -->
+    <string name="cd_breathing_animation">Анимация дыхания</string>
+    <string name="cd_stop_button">Кнопка экстренной остановки</string>
+    <string name="cd_progress_indicator">Индикатор прогресса</string>
+    <string name="cd_heart_rate">Индикатор пульса</string>
+</resources>

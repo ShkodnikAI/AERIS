@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors - Deep Ocean Teal (relaxation-focused) -->
+    <color name="primary">#FF0D7377</color>
+    <color name="primary_variant">#FF095456</color>
+    <color name="on_primary">#FFFFFFFF</color>
+    
+    <!-- Secondary Colors - Soft Amber (warmth) -->
+    <color name="secondary">#FFE8A87C</color>
+    <color name="secondary_variant">#FFC08552</color>
+    <color name="on_secondary">#FF1A1A1A</color>
+    
+    <!-- Tertiary - Soft Lavender (calm accent) -->
+    <color name="tertiary">#FF9B8DB7</color>
+    <color name="on_tertiary">#FF1A1A1A</color>
+    
+    <!-- Background - Deep Charcoal -->
+    <color name="background">#FF0F0F14</color>
+    <color name="on_background">#FFF5F5F5</color>
+    
+    <!-- Surface - Slightly elevated dark -->
+    <color name="surface">#FF1A1A22</color>
+    <color name="surface_variant">#FF252530</color>
+    <color name="on_surface">#FFF5F5F5</color>
+    <color name="on_surface_variant">#FFB0B0B5</color>
+    
+    <!-- Error -->
+    <color name="error">#FFCF6679</color>
+    <color name="on_error">#FF1A1A1A</color>
+    
+    <!-- Outline -->
+    <color name="outline">#FF3A3A45</color>
+    <color name="outline_variant">#FF2A2A35</color>
+    
+    <!-- Breathing Phase Colors -->
+    <color name="phase_inhale">#FF4ECDC4</color>
+    <color name="phase_hold">#FFE8A87C</color>
+    <color name="phase_exhale">#FF9B8DB7</color>
+    <color name="phase_hold_out">#FF6B7FD7</color>
+    
+    <!-- Category Colors -->
+    <color name="category_relaxation">#FF4ECDC4</color>
+    <color name="category_energy">#FFE8A87C</color>
+    <color name="category_therapy">#FF7BC8A4</color>
+    <color name="category_spiritual">#FF9B8DB7</color>
+    
+    <!-- Safety Colors -->
+    <color name="safety_warning">#FFFFC107</color>
+    <color name="safety_danger">#FFCF6679</color>
+    <color name="safety_success">#FF4CAF50</color>
+    
+    <!-- Transparent overlays -->
+    <color name="scrim">#80000000</color>
+    <color name="ripple">#40FFFFFF</color>
+</resources>

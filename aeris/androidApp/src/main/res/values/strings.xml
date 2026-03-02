@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AERIS</string>
+    <string name="app_tagline">Breathe Better. Live Better.</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_protocols">Protocols</string>
+    <string name="nav_session">Session</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Home -->
+    <string name="welcome_back">Welcome back</string>
+    <string name="today_recommendation">Today\'s Recommendation</string>
+    <string name="quick_start">Quick Start</string>
+    <string name="your_progress">Your Progress</string>
+    <string name="day_streak">Day Streak</string>
+    <string name="total_sessions">Total Sessions</string>
+    <string name="current_level">Level</string>
+    
+    <!-- Session -->
+    <string name="start_session">Start Session</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="stop">Stop</string>
+    <string name="complete">Complete</string>
+    <string name="cycle_format">Cycle %1$d of %2$d</string>
+    <string name="inhale">Inhale</string>
+    <string name="hold">Hold</string>
+    <string name="exhale">Exhale</string>
+    <string name="hold_out">Hold Empty</string>
+    <string name="skip_hold">Skip Hold</string>
+    <string name="great_job">Great Job!</string>
+    <string name="session_complete">Session Complete</string>
+    
+    <!-- Protocols -->
+    <string name="all_protocols">All</string>
+    <string name="relaxation">Relaxation</string>
+    <string name="energy">Energy</string>
+    <string name="therapy">Therapy</string>
+    <string name="spiritual">Spiritual</string>
+    <string name="minutes_format">%d min</string>
+    <string name="cycles_format">%d cycles</string>
+    <string name="locked">Locked</string>
+    <string name="unlock_at_level">Unlocks at level %d</string>
+    
+    <!-- Difficulty -->
+    <string name="beginner">Beginner</string>
+    <string name="intermediate">Intermediate</string>
+    <string name="advanced">Advanced</string>
+    <string name="expert">Expert</string>
+    
+    <!-- Safety -->
+    <string name="disclaimer_title">Medical Disclaimer</string>
+    <string name="disclaimer_text">AERIS is not a medical device and should not be used as a substitute for professional medical advice. Please consult with a healthcare provider before beginning any breathing exercise program.</string>
+    <string name="accept">I Understand</string>
+    <string name="emergency_calm">Calm in 60 Seconds</string>
+    
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="language">Language</string>
+    <string name="sound">Sound</string>
+    <string name="haptic_feedback">Haptic Feedback</string>
+    <string name="health_connect">Health Connect</string>
+    <string name="connect">Connect</string>
+    <string name="connected">Connected</string>
+    
+    <!-- Accessibility -->
+    <string name="cd_breathing_animation">Breathing animation guide</string>
+    <string name="cd_stop_button">Emergency stop button</string>
+    <string name="cd_progress_indicator">Session progress</string>
+    <string name="cd_heart_rate">Heart rate indicator</string>
+</resources>

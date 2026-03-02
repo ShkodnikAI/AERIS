@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.AERIS" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+    
+    <!-- Array for Health Connect permissions -->
+    <string-array name="health_permissions">
+        <item>androidx.health.permission.HeartRate.READ</item>
+        <item>androidx.health.permission.HeartRateVariabilityRmssd.READ</item>
+        <item>androidx.health.permission.SleepSession.READ</item>
+    </string-array>
+</resources>
