@@ -1,0 +1,196 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AERIS Protocol Schema",
+  "description": "Schema for defining breathing protocols in AERIS application",
+  "type": "object",
+  "required": ["id", "name", "description", "category", "mechanisms", "steps", "sessionDurationMinutes", "difficulty", "safetyRules", "animation"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z_]+$",
+      "description": "Unique identifier using snake_case"
+    },
+    "name": {
+      "$ref": "#/definitions/LocalizedString",
+      "description": "Display name in supported languages"
+    },
+    "description": {
+      "$ref": "#/definitions/LocalizedString",
+      "description": "Full description of the protocol"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["RELAXATION_SLEEP", "ENERGY_FOCUS", "THERAPY_HEALTH", "SPIRITUAL_ADVANCED"],
+      "description": "Primary purpose category"
+    },
+    "mechanisms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "PARASYMPATHETIC_ACTIVATION",
+          "SYMPATHETIC_STIMULATION",
+          "CO2_TRAINING",
+          "HYPOXIC_ADAPTATION",
+          "RESPIRATORY_MUSCLE_TRAINING",
+          "LUNG_CAPACITY_INCREASE",
+          "RESONANCE_SYNCHRONIZATION"
+        ]
+      },
+      "minItems": 1,
+      "description": "Physiological mechanisms involved"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BreathingStep"
+      },
+      "minItems": 1,
+      "description": "Sequence of breathing phases"
+    },
+    "sessionDurationMinutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 60,
+      "description": "Recommended session duration"
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["BEGINNER", "INTERMEDIATE", "ADVANCED", "EXPERT"],
+      "description": "Difficulty level for user filtering"
+    },
+    "safetyRules": {
+      "$ref": "#/definitions/SafetyRules"
+    },
+    "animation": {
+      "$ref": "#/definitions/AnimationConfig"
+    },
+    "tips": {
+      "$ref": "#/definitions/LocalizedStringArray",
+      "description": "Practice tips for users"
+    },
+    "benefits": {
+      "$ref": "#/definitions/LocalizedStringArray",
+      "description": "Expected benefits"
+    },
+    "scientificBackground": {
+      "$ref": "#/definitions/LocalizedString",
+      "description": "Scientific explanation and references"
+    },
+    "defaultCycles": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 4,
+      "description": "Default number of cycles"
+    },
+    "maxCycles": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 10,
+      "description": "Maximum allowed cycles"
+    },
+    "progressionScheme": {
+      "$ref": "#/definitions/ProgressionScheme",
+      "description": "For protocols with progressive difficulty"
+    }
+  },
+  "definitions": {
+    "LocalizedString": {
+      "type": "object",
+      "required": ["en", "ru"],
+      "properties": {
+        "en": { "type": "string" },
+        "ru": { "type": "string" }
+      }
+    },
+    "LocalizedStringArray": {
+      "type": "object",
+      "required": ["en", "ru"],
+      "properties": {
+        "en": { "type": "array", "items": { "type": "string" } },
+        "ru": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "BreathingStep": {
+      "type": "object",
+      "required": ["phase", "durationSeconds", "instruction"],
+      "properties": {
+        "phase": {
+          "type": "string",
+          "enum": ["INHALE", "HOLD_IN", "EXHALE", "HOLD_OUT"]
+        },
+        "durationSeconds": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 120
+        },
+        "instruction": {
+          "$ref": "#/definitions/LocalizedString"
+        }
+      }
+    },
+    "SafetyRules": {
+      "type": "object",
+      "properties": {
+        "minLevel": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "default": 1
+        },
+        "contraindications": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["HYPERTENSION", "PREGNANCY", "HEART_DISEASE", "EPILEPSY", "ASTHMA_SEVERE", "PANIC_DISORDER"]
+          },
+          "default": []
+        },
+        "maxHoldForBeginners": {
+          "type": "integer",
+          "default": 30
+        },
+        "hrThreshold": {
+          "type": "integer",
+          "default": 100
+        },
+        "requiresConsent": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "AnimationConfig": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["CIRCLE", "SQUARE", "WAVE", "CUSTOM"],
+          "default": "CIRCLE"
+        },
+        "soundEnabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "hapticFeedback": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "ProgressionScheme": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["INCREASING_INTERVALS", "DECREASING_REST", "PYRAMID"]
+        },
+        "baseInterval": { "type": "integer" },
+        "incrementPerCycle": { "type": "integer" },
+        "maxInterval": { "type": "integer" },
+        "recoveryBreaths": { "type": "integer" },
+        "description": { "$ref": "#/definitions/LocalizedString" }
+      }
+    }
+  }
+}

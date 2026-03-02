@@ -1,0 +1,103 @@
+{
+  "id": "box_breathing",
+  "name": {
+    "en": "Box Breathing",
+    "ru": "Квадратное дыхание"
+  },
+  "description": {
+    "en": "Used by Navy SEALs for stress management and focus. Equal duration phases create a balanced, rhythmic breathing pattern that enhances concentration.",
+    "ru": "Используется морскими котиками США для управления стрессом и концентрации. Равные фазы создают сбалансированный ритмичный паттерн дыхания."
+  },
+  "category": "ENERGY_FOCUS",
+  "mechanisms": [
+    "SYMPATHETIC_STIMULATION",
+    "RESONANCE_SYNCHRONIZATION"
+  ],
+  "steps": [
+    {
+      "phase": "INHALE",
+      "durationSeconds": 4.0,
+      "instruction": {
+        "en": "Breathe in slowly through your nose",
+        "ru": "Медленно вдохните через нос"
+      }
+    },
+    {
+      "phase": "HOLD_IN",
+      "durationSeconds": 4.0,
+      "instruction": {
+        "en": "Hold your breath",
+        "ru": "Задержите дыхание"
+      }
+    },
+    {
+      "phase": "EXHALE",
+      "durationSeconds": 4.0,
+      "instruction": {
+        "en": "Exhale slowly through your mouth",
+        "ru": "Медленно выдохните через рот"
+      }
+    },
+    {
+      "phase": "HOLD_OUT",
+      "durationSeconds": 4.0,
+      "instruction": {
+        "en": "Hold with empty lungs",
+        "ru": "Задержите с пустыми лёгкими"
+      }
+    }
+  ],
+  "sessionDurationMinutes": 5,
+  "difficulty": "INTERMEDIATE",
+  "safetyRules": {
+    "minLevel": 1,
+    "contraindications": [],
+    "maxHoldForBeginners": 30,
+    "hrThreshold": 100,
+    "requiresConsent": false
+  },
+  "animation": {
+    "type": "SQUARE",
+    "soundEnabled": true,
+    "hapticFeedback": true
+  },
+  "tips": {
+    "en": [
+      "Sit upright with a straight spine",
+      "Start with 4-second intervals, can progress to 6 or 8 seconds",
+      "Focus on making each side of the 'box' equal"
+    ],
+    "ru": [
+      "Сядьте прямо с ровной спиной",
+      "Начните с интервалов 4 секунды, можно увеличить до 6 или 8",
+      "Сосредоточьтесь на равных сторонах \"квадрата\""
+    ]
+  },
+  "benefits": {
+    "en": [
+      "Improves focus and concentration",
+      "Reduces stress response",
+      "Enhances emotional regulation",
+      "Boosts mental clarity"
+    ],
+    "ru": [
+      "Улучшает фокус и концентрацию",
+      "Снижает стрессовую реакцию",
+      "Улучшает эмоциональную регуляцию",
+      "Повышает ясность мышления"
+    ]
+  },
+  "scientificBackground": {
+    "en": "Box breathing balances the autonomic nervous system by creating equal phases of activation and rest. This rhythm entrains brain waves toward alpha state, associated with calm alertness.",
+    "ru": "Квадратное дыхание балансирует автономную нервную систему, создавая равные фазы активации и отдыха. Этот ритм синхронизирует мозговые волны в альфа-состояние, связанное со спокойной бдительностью."
+  },
+  "defaultCycles": 4,
+  "maxCycles": 10,
+  "progressionOptions": {
+    "intervals": [4, 5, 6, 8],
+    "description": {
+      "en": "As you progress, increase all phases equally",
+      "ru": "По мере прогресса увеличивайте все фазы равномерно"
+    }
+  }
+}

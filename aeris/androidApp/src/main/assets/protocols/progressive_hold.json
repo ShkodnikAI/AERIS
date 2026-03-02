@@ -1,0 +1,182 @@
+{
+  "id": "progressive_hold",
+  "name": {
+    "en": "Progressive Breath Hold",
+    "ru": "Прогрессивная задержка дыхания"
+  },
+  "description": {
+    "en": "Gradually increasing breath hold intervals to build CO2 tolerance and lung capacity. Scientifically designed progression for sustainable improvement.",
+    "ru": "Постепенно увеличивающиеся интервалы задержки дыхания для развития толерантности к CO2 и объёма лёгких. Научно разработанная прогрессия для устойчивого улучшения."
+  },
+  "category": "THERAPY_HEALTH",
+  "mechanisms": [
+    "CO2_TRAINING",
+    "LUNG_CAPACITY_INCREASE",
+    "RESPIRATORY_MUSCLE_TRAINING"
+  ],
+  "steps": [
+    {
+      "phase": "INHALE",
+      "durationSeconds": 4.0,
+      "instruction": {
+        "en": "Take a normal breath through your nose",
+        "ru": "Сделайте обычный вдох через нос"
+      }
+    },
+    {
+      "phase": "HOLD_IN",
+      "durationSeconds": 10.0,
+      "instruction": {
+        "en": "Hold gently - first interval",
+        "ru": "Мягко задержите - первый интервал"
+      }
+    },
+    {
+      "phase": "EXHALE",
+      "durationSeconds": 6.0,
+      "instruction": {
+        "en": "Exhale slowly and completely",
+        "ru": "Медленно и полностью выдохните"
+      }
+    },
+    {
+      "phase": "INHALE",
+      "durationSeconds": 4.0,
+      "instruction": {
+        "en": "Recovery breath",
+        "ru": "Восстановительный вдох"
+      }
+    },
+    {
+      "phase": "EXHALE",
+      "durationSeconds": 4.0,
+      "instruction": {
+        "en": "Normal exhale",
+        "ru": "Обычный выдох"
+      }
+    },
+    {
+      "phase": "INHALE",
+      "durationSeconds": 4.0,
+      "instruction": {
+        "en": "Prepare for longer hold",
+        "ru": "Подготовьтесь к более длинной задержке"
+      }
+    },
+    {
+      "phase": "HOLD_IN",
+      "durationSeconds": 15.0,
+      "instruction": {
+        "en": "Hold gently - second interval (+5s)",
+        "ru": "Мягко задержите - второй интервал (+5с)"
+      }
+    },
+    {
+      "phase": "EXHALE",
+      "durationSeconds": 6.0,
+      "instruction": {
+        "en": "Exhale slowly",
+        "ru": "Медленно выдохните"
+      }
+    },
+    {
+      "phase": "INHALE",
+      "durationSeconds": 4.0,
+      "instruction": {
+        "en": "Recovery breath",
+        "ru": "Восстановительный вдох"
+      }
+    },
+    {
+      "phase": "EXHALE",
+      "durationSeconds": 4.0,
+      "instruction": {
+        "en": "Normal exhale",
+        "ru": "Обычный выдох"
+      }
+    },
+    {
+      "phase": "INHALE",
+      "durationSeconds": 4.0,
+      "instruction": {
+        "en": "Final progression",
+        "ru": "Финальная прогрессия"
+      }
+    },
+    {
+      "phase": "HOLD_IN",
+      "durationSeconds": 20.0,
+      "instruction": {
+        "en": "Hold gently - third interval (+10s from start)",
+        "ru": "Мягко задержите - третий интервал (+10с от начала)"
+      }
+    },
+    {
+      "phase": "EXHALE",
+      "durationSeconds": 8.0,
+      "instruction": {
+        "en": "Complete exhale and relax",
+        "ru": "Полный выдох и расслабление"
+      }
+    }
+  ],
+  "sessionDurationMinutes": 7,
+  "difficulty": "INTERMEDIATE",
+  "safetyRules": {
+    "minLevel": 2,
+    "contraindications": ["HYPERTENSION", "HEART_DISEASE", "PREGNANCY"],
+    "maxHoldForBeginners": 20,
+    "hrThreshold": 90,
+    "requiresConsent": false
+  },
+  "animation": {
+    "type": "WAVE",
+    "soundEnabled": true,
+    "hapticFeedback": true
+  },
+  "tips": {
+    "en": [
+      "Never strain or force the holds",
+      "If you feel dizzy, skip to the exhale phase",
+      "Track your progress week over week",
+      "Best practiced in the morning on an empty stomach"
+    ],
+    "ru": [
+      "Никогда не напрягайтесь и не форсируйте задержки",
+      "При головокружении пропустите к фазе выдоха",
+      "Отслеживайте прогресс еженедельно",
+      "Лучше практиковать утром натощак"
+    ]
+  },
+  "benefits": {
+    "en": [
+      "Increases breath hold capacity",
+      "Improves CO2 tolerance",
+      "Builds respiratory muscle strength",
+      "Enhances oxygen efficiency"
+    ],
+    "ru": [
+      "Увеличивает ёмкость задержки дыхания",
+      "Улучшает толерантность к CO2",
+      "Укрепляет дыхательную мускулатуру",
+      "Повышает эффективность использования кислорода"
+    ]
+  },
+  "scientificBackground": {
+    "en": "Progressive overload applied to breath holding increases chemoreceptor tolerance to CO2. Research shows 10-15% improvement in breath hold times after 4 weeks of progressive training. The technique also strengthens intercostal muscles and diaphragm.",
+    "ru": "Прогрессивная нагрузка при задержке дыхания повышает толерантность хеморецепторов к CO2. Исследования показывают улучшение времени задержки на 10-15% после 4 недель прогрессивных тренировок. Техника также укрепляет межрёберные мышцы и диафрагму."
+  },
+  "defaultCycles": 1,
+  "maxCycles": 3,
+  "progressionScheme": {
+    "type": "INCREASING_INTERVALS",
+    "baseInterval": 10,
+    "incrementPerCycle": 5,
+    "maxInterval": 30,
+    "recoveryBreaths": 2,
+    "description": {
+      "en": "Each cycle adds 5 seconds to the hold duration, with recovery breaths between progressions",
+      "ru": "Каждый цикл добавляет 5 секунд к задержке с восстановительными вдохами между прогрессиями"
+    }
+  }
+}

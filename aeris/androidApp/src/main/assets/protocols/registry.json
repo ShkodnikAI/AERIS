@@ -1,0 +1,24 @@
+{
+  "protocols": [
+    {
+      "id": "four_seven_eight",
+      "category": "RELAXATION_SLEEP",
+      "mechanisms": ["PARASYMPATHETIC_ACTIVATION", "RESONANCE_SYNCHRONIZATION"],
+      "difficulty": "BEGINNER"
+    },
+    {
+      "id": "box_breathing",
+      "category": "ENERGY_FOCUS",
+      "mechanisms": ["SYMPATHETIC_STIMULATION", "RESONANCE_SYNCHRONIZATION"],
+      "difficulty": "INTERMEDIATE"
+    },
+    {
+      "id": "progressive_hold",
+      "category": "THERAPY_HEALTH",
+      "mechanisms": ["CO2_TRAINING", "LUNG_CAPACITY_INCREASE"],
+      "difficulty": "INTERMEDIATE"
+    }
+  ],
+  "version": "1.0.0",
+  "lastUpdated": "2026-01-01"
+}
