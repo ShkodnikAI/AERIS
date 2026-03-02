@@ -1,0 +1,88 @@
+{
+  "id": "four_seven_eight",
+  "name": {
+    "en": "4-7-8 Breathing",
+    "ru": "Дыхание 4-7-8"
+  },
+  "description": {
+    "en": "Dr. Andrew Weil's relaxation technique. A natural tranquilizer for the nervous system that helps reduce anxiety and promote sleep.",
+    "ru": "Техника релаксации доктора Эндрю Вейла. Естественный транквилизатор для нервной системы, помогающий снизить тревожность и улучшить сон."
+  },
+  "category": "RELAXATION_SLEEP",
+  "mechanisms": [
+    "PARASYMPATHETIC_ACTIVATION",
+    "RESONANCE_SYNCHRONIZATION"
+  ],
+  "steps": [
+    {
+      "phase": "INHALE",
+      "durationSeconds": 4.0,
+      "instruction": {
+        "en": "Breathe in quietly through your nose",
+        "ru": "Спокойно вдохните через нос"
+      }
+    },
+    {
+      "phase": "HOLD_IN",
+      "durationSeconds": 7.0,
+      "instruction": {
+        "en": "Hold your breath gently",
+        "ru": "Мягко задержите дыхание"
+      }
+    },
+    {
+      "phase": "EXHALE",
+      "durationSeconds": 8.0,
+      "instruction": {
+        "en": "Exhale completely through your mouth with a whoosh sound",
+        "ru": "Полностью выдохните через рот со звуком \"фу\""
+      }
+    }
+  ],
+  "sessionDurationMinutes": 5,
+  "difficulty": "BEGINNER",
+  "safetyRules": {
+    "minLevel": 1,
+    "contraindications": [],
+    "maxHoldForBeginners": 30,
+    "hrThreshold": 100,
+    "requiresConsent": false
+  },
+  "animation": {
+    "type": "CIRCLE",
+    "soundEnabled": true,
+    "hapticFeedback": true
+  },
+  "tips": {
+    "en": [
+      "Place the tip of your tongue against the ridge behind your upper front teeth",
+      "Keep your tongue in position throughout the exercise",
+      "Start with 4 cycles, gradually increase to 8"
+    ],
+    "ru": [
+      "Поместите кончик языка за верхние передние зубы",
+      "Держите язык в этом положении на протяжении всего упражнения",
+      "Начните с 4 циклов, постепенно увеличивая до 8"
+    ]
+  },
+  "benefits": {
+    "en": [
+      "Reduces anxiety and stress",
+      "Promotes better sleep",
+      "Helps manage cravings",
+      "Calms the nervous system"
+    ],
+    "ru": [
+      "Снижает тревожность и стресс",
+      "Улучшает качество сна",
+      "Помогает справиться с импульсами",
+      "Успокаивает нервную систему"
+    ]
+  },
+  "scientificBackground": {
+    "en": "The 4-7-8 technique activates the parasympathetic nervous system, promoting relaxation. The extended exhale stimulates the vagus nerve, reducing heart rate and blood pressure.",
+    "ru": "Техника 4-7-8 активирует парасимпатическую нервную систему, способствуя расслаблению. Удлинённый выдох стимулирует блуждающий нерв, снижая частоту сердечных сокращений и артериальное давление."
+  },
+  "defaultCycles": 4,
+  "maxCycles": 8
+}
