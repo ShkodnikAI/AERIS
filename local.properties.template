@@ -1,0 +1,3 @@
+sdk.dir=D:\\path\\to\\android-sdk
+# For macOS/Linux:
+# sdk.dir=/Users/USERNAME/Library/Android/sdk
