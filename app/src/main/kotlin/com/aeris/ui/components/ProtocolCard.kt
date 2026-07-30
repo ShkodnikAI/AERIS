@@ -77,6 +77,10 @@ fun getStringResId(key: String): Int {
         "protocol_kapalabhati_name" -> R.string.protocol_kapalabhati_name
         "protocol_alternate_nostril_name" -> R.string.protocol_alternate_nostril_name
         "protocol_sitali_name" -> R.string.protocol_sitali_name
+        "protocol_physiological_sigh_name" -> R.string.protocol_physiological_sigh_name
+        "protocol_resonance_breathing_name" -> R.string.protocol_resonance_breathing_name
+        "protocol_wim_hof_basic_name" -> R.string.protocol_wim_hof_basic_name
+        "protocol_coherent_breathing_name" -> R.string.protocol_coherent_breathing_name
         "filter_relaxation_sleep" -> R.string.filter_relaxation
         "filter_energy_focus" -> R.string.filter_energy
         "filter_therapy_health" -> R.string.filter_therapy
