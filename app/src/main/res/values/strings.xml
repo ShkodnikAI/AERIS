@@ -133,4 +133,12 @@ Stop immediately if you experience dizziness, pain, or discomfort.</string>
     <string name="contraindication_cardiac">Cardiac issues</string>
     <string name="duration_min">%1$d min</string>
     <string name="new_badge_earned">New badge earned: %1$s!</string>
+    <string name="protocol_physiological_sigh_name">Physiological Sigh</string>
+    <string name="protocol_physiological_sigh_desc">Double inhale + long exhale for rapid stress relief (Stanford/Huberman)</string>
+    <string name="protocol_resonance_breathing_name">Resonance Breathing</string>
+    <string name="protocol_resonance_breathing_desc">6 breaths/min for maximum HRV coherence (0.1 Hz)</string>
+    <string name="protocol_wim_hof_basic_name">Wim Hof Method</string>
+    <string name="protocol_wim_hof_basic_desc">Deep breathing + cold exposure prep. Anti-inflammatory effect</string>
+    <string name="protocol_coherent_breathing_name">Coherent Breathing</string>
+    <string name="protocol_coherent_breathing_desc">5 breaths/min for anxiety and depression reduction</string>
 </resources>
