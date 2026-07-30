@@ -133,4 +133,12 @@
     <string name="contraindication_cardiac">Заболевания сердца</string>
     <string name="duration_min">%1$d мин</string>
     <string name="new_badge_earned">Получен бейдж: %1$s!</string>
+    <string name="protocol_physiological_sigh_name">Физиологический вздох</string>
+    <string name="protocol_physiological_sigh_desc">Двойной вдох + длинный выдох для быстрого снятия стресса (Stanford/Huberman)</string>
+    <string name="protocol_resonance_breathing_name">Резонансное дыхание</string>
+    <string name="protocol_resonance_breathing_desc">6 вдохов/мин для максимальной когерентности ВСР (0.1 Гц)</string>
+    <string name="protocol_wim_hof_basic_name">Метод Вима Хофа</string>
+    <string name="protocol_wim_hof_basic_desc">Глубокое дыхание + подготовка к холоду. Противовоспалительный эффект</string>
+    <string name="protocol_coherent_breathing_name">Когерентное дыхание</string>
+    <string name="protocol_coherent_breathing_desc">5 вдохов/мин для снижения тревожности и депрессии</string>
 </resources>
