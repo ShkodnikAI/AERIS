@@ -83,6 +83,12 @@ fun ProfileScreen(
                                     label = { Text(stringResource(R.string.hrv_label)) },
                                     modifier = Modifier.fillMaxWidth()
                                 )
+                                OutlinedTextField(
+                                    value = data.boltScore.toString(),
+                                    onValueChange = { viewModel.updateBolt(it.toIntOrNull() ?: 20) },
+                                    label = { Text(stringResource(R.string.bolt_label)) },
+                                    modifier = Modifier.fillMaxWidth()
+                                )
                                 Text(stringResource(R.string.sleep_quality_label))
                                 Slider(
                                     value = data.sleepQuality,
