@@ -12,6 +12,7 @@ import com.aeris.ui.screens.disclaimer.DisclaimerScreen
 import com.aeris.ui.screens.emergency.EmergencyScreen
 import com.aeris.ui.screens.home.HomeScreen
 import com.aeris.ui.screens.profile.ProfileScreen
+import com.aeris.ui.screens.protocoldetail.ProtocolDetailScreen
 import com.aeris.ui.screens.protocols.ProtocolListScreen
 import com.aeris.ui.screens.session.SessionScreen
 import com.aeris.ui.screens.settings.SettingsScreen
@@ -41,19 +42,32 @@ fun AppNavGraph(
                 onNavigateToProtocols = { navController.navigate(Screen.ProtocolList.route) },
                 onNavigateToEmergency = { navController.navigate(Screen.Emergency.route) },
                 onNavigateToProfile = { navController.navigate(Screen.Profile.route) },
-                onNavigateToSession = { protocolId ->
-                    navController.navigate(Screen.Session.createRoute(protocolId))
+                onNavigateToProtocolDetail = { protocolId ->
+                    navController.navigate(Screen.ProtocolDetail.createRoute(protocolId))
                 }
             )
         }
         composable(Screen.ProtocolList.route) {
             ProtocolListScreen(
                 onNavigateBack = { navController.popBackStack() },
-                onNavigateToSession = { protocolId ->
-                    navController.navigate(Screen.Session.createRoute(protocolId))
+                onNavigateToProtocolDetail = { protocolId ->
+                    navController.navigate(Screen.ProtocolDetail.createRoute(protocolId))
+                }
+            )
+        }
+        composable(
+            route = Screen.ProtocolDetail.route,
+            arguments = listOf(navArgument("protocolId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val protocolId = backStackEntry.arguments?.getString("protocolId") ?: ""
+            ProtocolDetailScreen(
+                protocolId = protocolId,
+                onNavigateBack = { navController.popBackStack() },
+                onStartSession = { id ->
+                    navController.navigate(Screen.Session.createRoute(id))
                 },
-                onNavigateToConsent = { protocolId ->
-                    navController.navigate(Screen.Consent.createRoute(protocolId))
+                onNavigateToConsent = { id ->
+                    navController.navigate(Screen.Consent.createRoute(id))
                 }
             )
         }
