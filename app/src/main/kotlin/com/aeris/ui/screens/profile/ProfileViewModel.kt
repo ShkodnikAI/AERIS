@@ -22,6 +22,7 @@ data class ProfileData(
     val hr: Int,
     val hrv: Int,
     val sleepQuality: Float,
+    val boltScore: Int,
     val bci: Float,
     val hasHypertension: Boolean,
     val hasPregnancy: Boolean,
@@ -65,6 +66,7 @@ class ProfileViewModel @Inject constructor(
                 hr = profile.heartRate,
                 hrv = profile.hrv,
                 sleepQuality = profile.sleepQuality,
+                boltScore = profile.boltScore,
                 bci = state.bci,
                 hasHypertension = profile.contraindications.contains(Contraindication.HYPERTENSION),
                 hasPregnancy = profile.contraindications.contains(Contraindication.PREGNANCY),
@@ -91,6 +93,7 @@ class ProfileViewModel @Inject constructor(
     fun updateHr(hr: Int) { updateProfile { it.copy(heartRate = hr) } }
     fun updateHrv(hrv: Int) { updateProfile { it.copy(hrv = hrv) } }
     fun updateSleep(sleep: Float) { updateProfile { it.copy(sleepQuality = sleep) } }
+    fun updateBolt(bolt: Int) { updateProfile { it.copy(boltScore = bolt) } }
     fun toggleHypertension(checked: Boolean) { toggleContra(Contraindication.HYPERTENSION, checked) }
     fun togglePregnancy(checked: Boolean) { toggleContra(Contraindication.PREGNANCY, checked) }
     fun toggleCardiac(checked: Boolean) { toggleContra(Contraindication.CARDIAC_ISSUES, checked) }
