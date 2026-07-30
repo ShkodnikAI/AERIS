@@ -141,4 +141,5 @@ Stop immediately if you experience dizziness, pain, or discomfort.</string>
     <string name="protocol_wim_hof_basic_desc">Deep breathing + cold exposure prep. Anti-inflammatory effect</string>
     <string name="protocol_coherent_breathing_name">Coherent Breathing</string>
     <string name="protocol_coherent_breathing_desc">5 breaths/min for anxiety and depression reduction</string>
+    <string name="bolt_label">BOLT Score (seconds)</string>
 </resources>
