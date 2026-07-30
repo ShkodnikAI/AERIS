@@ -141,4 +141,5 @@
     <string name="protocol_wim_hof_basic_desc">Глубокое дыхание + подготовка к холоду. Противовоспалительный эффект</string>
     <string name="protocol_coherent_breathing_name">Когерентное дыхание</string>
     <string name="protocol_coherent_breathing_desc">5 вдохов/мин для снижения тревожности и депрессии</string>
+    <string name="bolt_label">BOLT Score (секунды)</string>
 </resources>
