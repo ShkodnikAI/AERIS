@@ -6,9 +6,12 @@ data class Protocol(
     val category: Category,
     val mechanisms: List<Mechanism>,
     val descriptionKey: String,
+    val physicsKey: String,
+    val rulesKey: String,
     val steps: List<BreathStep>,
     val defaultCycles: Int,
     val sessionDurationMin: Int,
     val difficulty: Difficulty,
-    val safetyRules: SafetyRules
+    val safetyRules: SafetyRules,
+    val audioType: AudioType = AudioType.NONE
 )
