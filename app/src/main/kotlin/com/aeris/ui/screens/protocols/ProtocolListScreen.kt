@@ -21,8 +21,7 @@ import com.aeris.ui.model.UiState
 @Composable
 fun ProtocolListScreen(
     onNavigateBack: () -> Unit,
-    onNavigateToSession: (String) -> Unit,
-    onNavigateToConsent: (String) -> Unit,
+    onNavigateToProtocolDetail: (String) -> Unit,
     viewModel: ProtocolListViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -66,10 +65,8 @@ fun ProtocolListScreen(
                                 isLocked = item.isLocked,
                                 hasWarning = item.hasWarning,
                                 onClick = {
-                                    if (item.requiresConsent) {
-                                        onNavigateToConsent(item.protocol.id)
-                                    } else {
-                                        onNavigateToSession(item.protocol.id)
+                                    if (!item.isLocked) {
+                                        onNavigateToProtocolDetail(item.protocol.id)
                                     }
                                 }
                             )
