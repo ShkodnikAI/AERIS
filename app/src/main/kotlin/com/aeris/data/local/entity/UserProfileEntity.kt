@@ -10,6 +10,7 @@ data class UserProfileEntity(
     val heartRate: Int = 70,
     val hrv: Int = 50,
     val sleepQuality: Float = 0.7f,
+    val boltScore: Int = 20,
     val hasHypertension: Boolean = false,
     val hasPregnancy: Boolean = false,
     val hasCardiacIssues: Boolean = false,
