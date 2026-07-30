@@ -4,11 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aeris.domain.model.*
 import com.aeris.domain.repository.ProtocolRepository
+import com.aeris.domain.repository.SessionRepository
 import com.aeris.domain.repository.UserRepository
-import com.aeris.domain.usecase.CalculateBCI
-import com.aeris.domain.usecase.CalculateNSI
-import com.aeris.domain.usecase.CalculateStreak
-import com.aeris.domain.usecase.RecommendProtocols
+import com.aeris.domain.usecase.*
 import com.aeris.ui.model.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -26,6 +24,7 @@ data class HomeData(
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val userRepository: UserRepository,
+    private val sessionRepository: SessionRepository,
     private val protocolRepository: ProtocolRepository,
     private val calculateNSI: CalculateNSI,
     private val calculateBCI: CalculateBCI,
@@ -48,13 +47,31 @@ class HomeViewModel @Inject constructor(
             combine(
                 userRepository.getUserProfile(),
                 userRepository.getUserState(),
+                sessionRepository.getAllSessions(),
                 protocolRepository.getAllProtocols()
-            ) { profile, state, protocols ->
+            ) { profile, state, sessions, protocols ->
                 val nsi = calculateNSI(profile.heartRate, profile.hrv, profile.sleepQuality)
-                val bci = calculateBCI(0f) // placeholder
-                val streak = calculateStreak(emptyList()) // placeholder
+                val bci = calculateBCI(0f)
+                val streak = calculateStreak(sessions.map { it.completedAt })
+                val totalSessions = sessions.size
+                val level = when {
+                    totalSessions >= 100 && bci > 75 -> 5
+                    totalSessions >= 50 && bci > 60 -> 4
+                    totalSessions >= 25 && bci > 40 -> 3
+                    totalSessions >= 10 -> 2
+                    else -> 1
+                }
+                val userState = UserState(
+                    level = level,
+                    nsi = nsi,
+                    bci = bci,
+                    totalSessions = totalSessions,
+                    currentStreak = streak,
+                    contraindications = profile.contraindications,
+                    hasGivenConsent = profile.hasGivenConsent
+                )
                 val recommendations = recommendProtocols(
-                    UserState(level = 1, nsi = nsi, bci = bci, totalSessions = 0, currentStreak = streak),
+                    userState,
                     profile,
                     protocols,
                     Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
