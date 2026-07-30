@@ -5,7 +5,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -23,7 +22,7 @@ fun HomeScreen(
     onNavigateToProtocols: () -> Unit,
     onNavigateToEmergency: () -> Unit,
     onNavigateToProfile: () -> Unit,
-    onNavigateToSession: (String) -> Unit,
+    onNavigateToProtocolDetail: (String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -58,7 +57,7 @@ fun HomeScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         NsiIndicator(state = data.nsi)
-                        Text("Streak: ${data.streak} days", style = MaterialTheme.typography.bodyMedium)
+                        Text("${stringResource(R.string.streak_label)}: ${data.streak}", style = MaterialTheme.typography.bodyMedium)
                     }
                     BciProgressBar(bci = data.bci)
                     Button(
@@ -80,7 +79,7 @@ fun HomeScreen(
                                 protocol = protocol,
                                 isLocked = false,
                                 hasWarning = false,
-                                onClick = { onNavigateToSession(protocol.id) }
+                                onClick = { onNavigateToProtocolDetail(protocol.id) }
                             )
                         }
                     }
@@ -112,9 +111,9 @@ fun HomeScreen(
 fun getGreeting(): String {
     val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
     return when (hour) {
-        in 6..11 -> "Good morning"
-        in 12..17 -> "Good afternoon"
-        in 18..23 -> "Good evening"
-        else -> "Good night"
+        in 6..11 -> stringResource(R.string.greeting_morning)
+        in 12..17 -> stringResource(R.string.greeting_afternoon)
+        in 18..23 -> stringResource(R.string.greeting_evening)
+        else -> stringResource(R.string.greeting_night)
     }
 }
