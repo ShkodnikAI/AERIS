@@ -1,6 +1,7 @@
 package com.aeris.di
 
 import android.content.Context
+import com.aeris.audio.AudioService
 import com.aeris.data.datastore.SettingsManager
 import com.aeris.data.local.database.AerisDatabase
 import com.aeris.data.repository.*
@@ -39,6 +40,12 @@ object AppModule {
     @Singleton
     fun provideSettingsManager(@ApplicationContext context: Context): SettingsManager {
         return SettingsManager(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAudioService(@ApplicationContext context: Context): AudioService {
+        return AudioService(context)
     }
 
     @Provides
