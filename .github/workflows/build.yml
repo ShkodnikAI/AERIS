@@ -23,34 +23,22 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v3
-        with:
-          gradle-version: 8.4
-
-      - name: Cache Gradle
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+      - name: Download and install Gradle 8.4
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.4-bin.zip -O /tmp/gradle.zip
+          unzip -q /tmp/gradle.zip -d /tmp/
+          echo "/tmp/gradle-8.4/bin" >> $GITHUB_PATH
+          gradle --version
 
       - name: Create local.properties
         run: |
           echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
-      - name: Generate Gradle Wrapper if missing
-        run: |
-          if [ ! -f "gradlew" ]; then
-            gradle wrapper --gradle-version 8.4
-          fi
-          chmod +x gradlew
-
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        run: |
+          gradle assembleDebug
+        env:
+          ANDROID_SDK_ROOT: ${{ env.ANDROID_SDK_ROOT }}
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
@@ -60,12 +48,7 @@ jobs:
           retention-days: 30
 
       - name: Run Unit Tests
-        run: ./gradlew test
-
-      - name: Upload Test Results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-results
-          path: app/build/reports/tests/
-          retention-days: 7
+        run: |
+          gradle test
+        env:
+          ANDROID_SDK_ROOT: ${{ env.ANDROID_SDK_ROOT }}
