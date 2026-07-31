@@ -2,6 +2,7 @@ package com.aeris.ui.screens.session
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aeris.audio.AudioService
 import com.aeris.domain.model.*
 import com.aeris.domain.repository.ProtocolRepository
 import com.aeris.domain.usecase.CompleteSession
@@ -14,7 +15,8 @@ import javax.inject.Inject
 @HiltViewModel
 class SessionViewModel @Inject constructor(
     private val protocolRepository: ProtocolRepository,
-    private val completeSession: CompleteSession
+    private val completeSession: CompleteSession,
+    private val audioService: AudioService
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<SessionUiState>(SessionUiState.Breathing)
@@ -54,8 +56,40 @@ class SessionViewModel @Inject constructor(
             protocolRepository.getProtocolById(id).first()?.let { p ->
                 protocol = p
                 _totalCycles.value = p.defaultCycles
+                startAudio(p)
                 startSession()
             }
+        }
+    }
+
+    private fun startAudio(p: Protocol) {
+        when (p.audioType) {
+            AudioType.BINAURAL -> {
+                val beatFreq = when {
+                    p.mechanisms.contains(Mechanism.PARASYMPATHETIC) -> 8.0  // Alpha
+                    p.mechanisms.contains(Mechanism.RESONANCE_SYNC) -> 6.0 // Theta
+                    else -> 8.0
+                }
+                audioService.playBinaural(baseFreq = 432.0, beatFreq = beatFreq)
+            }
+            AudioType.MEDITATION -> audioService.playMeditationDrone(baseFreq = 110.0)
+            AudioType.ENERGETIC -> audioService.playEnergetic(baseFreq = 220.0)
+            AudioType.AFFIRMATION -> {
+                audioService.speakAffirmation("Начинаем практику. Следуйте инструкциям на экране.")
+            }
+            AudioType.NONE -> { /* No audio */ }
+        }
+    }
+
+    private fun announcePhase(phase: Phase) {
+        if (protocol?.audioType == AudioType.AFFIRMATION) {
+            val text = when (phase) {
+                Phase.INHALE -> "Вдох"
+                Phase.HOLD -> "Задержка"
+                Phase.EXHALE -> "Выдох"
+                Phase.HOLD_EMPTY -> "Пауза"
+            }
+            audioService.speakAffirmation(text)
         }
     }
 
@@ -74,6 +108,7 @@ class SessionViewModel @Inject constructor(
                 _currentPhase.value = step.phase
                 _phaseText.value = step.phase.name
                 _countdown.value = step.durationSec
+                announcePhase(step.phase)
                 for (i in step.durationSec downTo 1) {
                     _countdown.value = i
                     delay(1000)
@@ -92,6 +127,7 @@ class SessionViewModel @Inject constructor(
     fun dismissStopDialog() { _showStopDialog.value = false }
     fun finishSession() {
         job?.cancel()
+        audioService.stop()
         val duration = ((System.currentTimeMillis() - startTime) / 1000).toInt()
         _uiState.value = SessionUiState.Completed(
             cyclesDone = _currentCycle.value,
@@ -110,7 +146,6 @@ class SessionViewModel @Inject constructor(
             _showSkipWarning.value = true
         }
         job?.cancel()
-        // Skip to next phase logic would go here
         runCycle()
     }
 
@@ -130,11 +165,13 @@ class SessionViewModel @Inject constructor(
                 completed = true
             )
             completeSession(session)
+            audioService.stop()
         }
     }
 
     override fun onCleared() {
         super.onCleared()
         job?.cancel()
+        audioService.release()
     }
 }
