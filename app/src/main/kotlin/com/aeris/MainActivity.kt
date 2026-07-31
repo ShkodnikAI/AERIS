@@ -66,14 +66,30 @@ fun AerisApp() {
         Screen.Profile to Icons.Default.Person
     )
 
-    val showBottomBar = bottomScreens.any { it.first.route == currentDestination?.route }
+    // Скрываем BottomNav на immersive экранах (Session, ProtocolDetail, Consent, Disclaimer)
+    val hideBottomBarRoutes = setOf(
+        Screen.Session.route,
+        Screen.ProtocolDetail.route,
+        Screen.Consent.route,
+        Screen.Disclaimer.route,
+        Screen.Settings.route
+    )
+    val showBottomBar = bottomScreens.any { 
+        currentDestination?.hierarchy?.any { dest -> 
+            dest.route?.startsWith(it.first.route.split("/")[0]) == true 
+        } == true
+    } && currentDestination?.route?.let { route ->
+        hideBottomBarRoutes.none { route.startsWith(it.split("/")[0]) }
+    } != false
 
     Scaffold(
         bottomBar = {
             if (showBottomBar) {
                 NavigationBar {
                     bottomScreens.forEach { (screen, icon) ->
-                        val selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true
+                        val selected = currentDestination?.hierarchy?.any { 
+                            it.route?.startsWith(screen.route.split("/")[0]) == true 
+                        } == true
                         NavigationBarItem(
                             icon = { Icon(icon, contentDescription = null) },
                             label = { Text(stringResource(id = getNavLabel(screen))) },
