@@ -27,11 +27,12 @@ fun HomeScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val showSheet by viewModel.showUpdateSheet.collectAsState()
+    val greeting = rememberGreeting()
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(getGreeting()) },
+                title = { Text(greeting) },
                 actions = {
                     IconButton(onClick = onNavigateToProfile) {
                         Icon(Icons.Default.Person, contentDescription = "Profile")
@@ -108,7 +109,8 @@ fun HomeScreen(
     }
 }
 
-fun getGreeting(): String {
+@Composable
+fun rememberGreeting(): String {
     val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
     return when (hour) {
         in 6..11 -> stringResource(R.string.greeting_morning)
