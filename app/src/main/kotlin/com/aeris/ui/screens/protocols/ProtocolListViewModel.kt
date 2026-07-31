@@ -39,24 +39,20 @@ class ProtocolListViewModel @Inject constructor(
         _selectedCategory,
         _selectedDifficulty
     ) { protocols, profile, state, category, difficulty ->
-        try {
-            val filtered = protocols.filter { p ->
-                (category == null || p.category == category) &&
-                (difficulty == null || p.difficulty == difficulty)
-            }
-            val items = filtered.map { p ->
-                val safety = checkSafety(p, state, profile)
-                ProtocolListItem(
-                    protocol = p,
-                    isLocked = safety is SafetyResult.Blocked,
-                    hasWarning = safety is SafetyResult.Warning,
-                    requiresConsent = p.safetyRules.requiresConsent && !profile.hasGivenConsent
-                )
-            }
-            UiState.Success(items)
-        } catch (e: Exception) {
-            UiState.Error(e.message ?: "Unknown error")
+        val filtered = protocols.filter { p ->
+            (category == null || p.category == category) &&
+            (difficulty == null || p.difficulty == difficulty)
         }
+        val items = filtered.map { p ->
+            val safety = checkSafety(p, state, profile)
+            ProtocolListItem(
+                protocol = p,
+                isLocked = safety is SafetyResult.Blocked,
+                hasWarning = safety is SafetyResult.Warning,
+                requiresConsent = p.safetyRules.requiresConsent && !profile.hasGivenConsent
+            )
+        }
+        UiState.Success(items)
     }.catch { e ->
         emit(UiState.Error(e.message ?: "Unknown error"))
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), UiState.Loading)
