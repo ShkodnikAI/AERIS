@@ -1,16 +1,12 @@
 name: Build AERIS APK
 
 on:
-  # Автотриггер: сборка при ЛЮБОМ пуше в любую ветку
   push:
     branches:
       - '**'
-  # Автотриггер: при Pull Request в main
   pull_request:
     branches: [ main ]
-  # Ручной запуск через кнопку в GitHub UI
   workflow_dispatch:
-  # Автотриггер: ежедневная сборка в 6:00 UTC (9:00 МСК)
   schedule:
     - cron: '0 6 * * *'
 
@@ -18,11 +14,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Node.js 24
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -35,22 +26,22 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Download and install Gradle 8.4
-        run: |
-          wget -q https://services.gradle.org/distributions/gradle-8.4-bin.zip -O /tmp/gradle.zip
-          unzip -q /tmp/gradle.zip -d /tmp/
-          echo "/tmp/gradle-8.4/bin" >> $GITHUB_PATH
-          gradle --version
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: "8.4"
 
       - name: Create local.properties
         run: |
           echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
-      - name: Build Debug APK
+      - name: Generate Gradle Wrapper
         run: |
-          gradle assembleDebug
-        env:
-          ANDROID_SDK_ROOT: ${{ env.ANDROID_SDK_ROOT }}
+          gradle wrapper --gradle-version 8.4
+          chmod +x gradlew
+
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
@@ -60,7 +51,4 @@ jobs:
           retention-days: 30
 
       - name: Run Unit Tests
-        run: |
-          gradle test
-        env:
-          ANDROID_SDK_ROOT: ${{ env.ANDROID_SDK_ROOT }}
+        run: ./gradlew test
