@@ -23,6 +23,11 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+        with:
+          gradle-version: 8.4
+
       - name: Cache Gradle
         uses: actions/cache@v4
         with:
@@ -37,8 +42,12 @@ jobs:
         run: |
           echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - name: Generate Gradle Wrapper if missing
+        run: |
+          if [ ! -f "gradlew" ]; then
+            gradle wrapper --gradle-version 8.4
+          fi
+          chmod +x gradlew
 
       - name: Build Debug APK
         run: ./gradlew assembleDebug
