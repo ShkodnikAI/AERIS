@@ -45,37 +45,41 @@ class ProfileViewModel @Inject constructor(
         userRepository.getUserState(),
         sessionRepository.getAllSessions()
     ) { profile, state, sessions ->
-        val timestamps = sessions.map { it.completedAt }
-        val streak = calculateStreak(timestamps)
-        val level = calculateLevel(sessions.size, state.bci)
-        val weekly = getWeeklySessions(sessions)
-        val badges = listOf(
-            Badge("first_breath", "badge_first_breath_name", "badge_first_breath_desc"),
-            Badge("week_warrior", "badge_week_warrior_name", "badge_week_warrior_desc"),
-            Badge("co2_warrior", "badge_co2_warrior_name", "badge_co2_warrior_desc"),
-            Badge("night_owl", "badge_night_owl_name", "badge_night_owl_desc"),
-            Badge("early_bird", "badge_early_bird_name", "badge_early_bird_desc"),
-            Badge("month_master", "badge_month_master_name", "badge_month_master_desc"),
-            Badge("century", "badge_century_name", "badge_century_desc")
-        )
-        val earned = userRepository.getEarnedBadges().first()
-        UiState.Success(
-            ProfileData(
-                level = level,
-                streak = streak,
-                hr = profile.heartRate,
-                hrv = profile.hrv,
-                sleepQuality = profile.sleepQuality,
-                boltScore = profile.boltScore,
-                bci = state.bci,
-                hasHypertension = profile.contraindications.contains(Contraindication.HYPERTENSION),
-                hasPregnancy = profile.contraindications.contains(Contraindication.PREGNANCY),
-                hasCardiac = profile.contraindications.contains(Contraindication.CARDIAC_ISSUES),
-                weeklySessions = weekly,
-                allBadges = badges,
-                earnedBadges = earned
+        try {
+            val timestamps = sessions.map { it.completedAt }
+            val streak = calculateStreak(timestamps)
+            val level = calculateLevel(sessions.size, state.bci)
+            val weekly = getWeeklySessions(sessions)
+            val badges = listOf(
+                Badge("first_breath", "badge_first_breath_name", "badge_first_breath_desc"),
+                Badge("week_warrior", "badge_week_warrior_name", "badge_week_warrior_desc"),
+                Badge("co2_warrior", "badge_co2_warrior_name", "badge_co2_warrior_desc"),
+                Badge("night_owl", "badge_night_owl_name", "badge_night_owl_desc"),
+                Badge("early_bird", "badge_early_bird_name", "badge_early_bird_desc"),
+                Badge("month_master", "badge_month_master_name", "badge_month_master_desc"),
+                Badge("century", "badge_century_name", "badge_century_desc")
             )
-        )
+            val earned = userRepository.getEarnedBadges().first()
+            UiState.Success(
+                ProfileData(
+                    level = level,
+                    streak = streak,
+                    hr = profile.heartRate,
+                    hrv = profile.hrv,
+                    sleepQuality = profile.sleepQuality,
+                    boltScore = profile.boltScore,
+                    bci = state.bci,
+                    hasHypertension = profile.contraindications.contains(Contraindication.HYPERTENSION),
+                    hasPregnancy = profile.contraindications.contains(Contraindication.PREGNANCY),
+                    hasCardiac = profile.contraindications.contains(Contraindication.CARDIAC_ISSUES),
+                    weeklySessions = weekly,
+                    allBadges = badges,
+                    earnedBadges = earned
+                )
+            )
+        } catch (e: Exception) {
+            UiState.Error(e.message ?: "Unknown error")
+        }
     }.catch { e ->
         emit(UiState.Error(e.message ?: "Unknown error"))
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), UiState.Loading)
