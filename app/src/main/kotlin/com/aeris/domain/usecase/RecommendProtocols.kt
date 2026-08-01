@@ -31,7 +31,7 @@ class RecommendProtocols(private val checkSafety: CheckSafety) {
                     else -> false
                 }
                 if (categoryMatch) score += 0.2
-                if (userState.bci < 40 && protocol.difficulty == Difficulty.BEGINNER) score += 0.1
+                if (userState.bci < 40f && protocol.difficulty == Difficulty.BEGINNER) score += 0.1
                 if (!completedIds.contains(protocol.id)) score += 0.05
                 protocol to score
             }
